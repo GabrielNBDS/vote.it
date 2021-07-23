@@ -5,13 +5,13 @@ import 'firebase/storage';
 import 'firebase/analytics';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBVizlkLbvGWMnlntS4Ll_HXbUv98nJDe8',
-  authDomain: 'boilerplate-330bd.firebaseapp.com',
-  projectId: 'boilerplate-330bd',
-  storageBucket: 'boilerplate-330bd.appspot.com',
-  messagingSenderId: '91935197771',
-  appId: '1:91935197771:web:58c40cddb2e4e418b49bce',
-  measurementId: 'G-T0XZ1ENBKF',
+  apiKey: 'AIzaSyCwZBGS_DAdvkHh5tvooE6XXgC5xc5hW54',
+  authDomain: 'voteit-45550.firebaseapp.com',
+  projectId: 'voteit-45550',
+  storageBucket: 'voteit-45550.appspot.com',
+  messagingSenderId: '865827562467',
+  appId: '1:865827562467:web:e97352789c88016cec36d6',
+  measurementId: 'G-EV18GR57LB',
 };
 
 try {
