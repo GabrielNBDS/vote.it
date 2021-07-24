@@ -71,7 +71,7 @@ const CreatePool: React.FC = () => {
 
       childNames.push(childName);
 
-      const ref = cdn.child(childName);
+      const ref = cdn.ref().child(childName);
 
       return ref.put(image);
     });
@@ -88,7 +88,7 @@ const CreatePool: React.FC = () => {
     });
 
     const imagesUrlRef = childNames.map(childName => {
-      const imageRef = cdn.child(childName);
+      const imageRef = cdn.ref().child(childName);
       return imageRef.getDownloadURL();
     });
 

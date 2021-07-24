@@ -29,6 +29,6 @@ export default fire;
 
 const { analytics } = fire;
 const db = fire.firestore();
-const cdn = fire.storage().ref();
+const cdn = fire.storage();
 
 export { analytics, db, cdn, firebaseConfig };
