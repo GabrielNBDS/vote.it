@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useState, useEffect } from 'react';
 import {
   Alert,
   AlertIcon,
@@ -36,10 +36,19 @@ const CreatePool: React.FC = () => {
 
   const [error, setError] = useState('');
 
+  useEffect(() => {
+    setError('');
+  }, [items]);
+
   const handleCreatePool = async (e: FormEvent) => {
     e.preventDefault();
 
     setError('');
+
+    if (items.length < 1) {
+      setError('Add at least one item.');
+      return;
+    }
 
     let allItemsHaveImages = true;
 
