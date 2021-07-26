@@ -1,14 +1,7 @@
 import React from 'react';
 import { useCollection, useDocument } from '@nandorojo/swr-firestore';
 import { useRouter } from 'next/router';
-import {
-  Container,
-  Flex,
-  Heading,
-  Spinner,
-  Stack,
-  Text,
-} from '@chakra-ui/react';
+import { Container, Flex, Heading, Spinner, Stack } from '@chakra-ui/react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
 import IPool from '../../interfaces/Pool';
 import PoolItem from '../PoolItem';
