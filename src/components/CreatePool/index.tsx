@@ -92,7 +92,7 @@ const CreatePool: React.FC = () => {
     const poolRef = await db.collection('pools').doc();
 
     batch.set(poolRef, {
-      poolName,
+      name: poolName,
       ownerId: user.uid,
     });
 
