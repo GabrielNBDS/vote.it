@@ -1,10 +1,17 @@
 import React from 'react';
 import { useCollection, useDocument } from '@nandorojo/swr-firestore';
 import { useRouter } from 'next/router';
-import { Container, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import {
+  Container,
+  Flex,
+  Heading,
+  Spinner,
+  Stack,
+  Text,
+} from '@chakra-ui/react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
 import IPool from '../../interfaces/Pool';
-import PoolItem from './PoolItem';
+import PoolItem from '../PoolItem';
 import IItem from '../../interfaces/Item';
 
 const chartColors = ['#3182CE', '#E53E3E', '#38A169'];
@@ -23,7 +30,11 @@ const PoolDetails: React.FC = () => {
   );
 
   if (poolLoading || itemsLoading) {
-    return <Text>loading...</Text>;
+    return (
+      <Flex height="10vh" align="center" justify="center">
+        <Spinner />
+      </Flex>
+    );
   }
 
   return (
