@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Text, VStack } from '@chakra-ui/react';
-import IItem from '../../interfaces/Item';
+import IItem from '../interfaces/Item';
 
 interface IProps {
   item: IItem;
