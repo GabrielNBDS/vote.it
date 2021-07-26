@@ -111,7 +111,7 @@ const CreatePool: React.FC = () => {
         .doc();
 
       batch.set(dbRef, {
-        itemName: items[index].name,
+        name: items[index].name,
         image,
       });
     });
