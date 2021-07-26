@@ -113,6 +113,7 @@ const CreatePool: React.FC = () => {
       batch.set(dbRef, {
         name: items[index].name,
         image,
+        votes: 0,
       });
     });
 
