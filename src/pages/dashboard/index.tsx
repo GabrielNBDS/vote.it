@@ -43,13 +43,7 @@ const Dashboard: React.FC = () => {
           <VStack align="flex-start">
             {pools.map(pool => (
               <Link key={pool.id} href={`/dashboard/${pool.id}`}>
-                <Box
-                  cursor="pointer"
-                  borderRadius="full"
-                  py={4}
-                  px={6}
-                  boxShadow="base"
-                >
+                <Box cursor="pointer" py={4} px={6} boxShadow="base">
                   <Text>{pool.name}</Text>
                 </Box>
               </Link>

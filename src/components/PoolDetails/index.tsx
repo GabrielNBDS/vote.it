@@ -33,6 +33,12 @@ const PoolDetails: React.FC = () => {
     { listen: true, orderBy: ['name', 'asc'] },
   );
 
+  const { onCopy: copyLink } = useClipboard(
+    `https://voteit.gabrielnbds.dev/${id || ''}`,
+  );
+
+  const { onCopy: copyCode } = useClipboard(id || '');
+
   if (poolLoading || itemsLoading) {
     return (
       <Flex height="10vh" align="center" justify="center">
@@ -40,12 +46,6 @@ const PoolDetails: React.FC = () => {
       </Flex>
     );
   }
-
-  const { onCopy: copyLink } = useClipboard(
-    `https://voteit.gabrielnbds.dev/${id}`,
-  );
-
-  const { onCopy: copyCode } = useClipboard(id);
 
   return (
     <Container mt={8} pb={8} maxW="1200px">
