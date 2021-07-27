@@ -24,6 +24,7 @@ import { useRouter } from 'next/router';
 
 const SplitScreen: React.FC = () => {
   const [poolCode, setPoolCode] = useState('');
+  const [loading, setLoading] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const router = useRouter();
@@ -103,6 +104,7 @@ const SplitScreen: React.FC = () => {
           onSubmit={e => {
             e.preventDefault();
 
+            setLoading(true);
             router.push(`/${poolCode}`);
           }}
           borderRadius="0"
@@ -112,7 +114,7 @@ const SplitScreen: React.FC = () => {
           </ModalHeader>
           <ModalCloseButton color="white" />
           <ModalBody>
-            <FormControl isRequired>
+            <FormControl isDisabled={loading} isRequired>
               <FormLabel>Pool code</FormLabel>
               <Input
                 value={poolCode}
@@ -122,7 +124,12 @@ const SplitScreen: React.FC = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button type="submit" colorScheme="blue" mx="auto">
+            <Button
+              isLoading={loading}
+              type="submit"
+              colorScheme="blue"
+              mx="auto"
+            >
               Go to pool
             </Button>
           </ModalFooter>
