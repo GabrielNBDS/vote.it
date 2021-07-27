@@ -18,9 +18,15 @@ import VoteItem from '../components/VoteItem';
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const id = ctx.params.id as string;
 
-  const pool = (await (
-    await db.collection('pools').doc(id).get()
-  ).data()) as IPool;
+  const poolDocument = await db.collection('pools').doc(id).get();
+
+  if (!poolDocument.exists) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const pool = poolDocument.data() as IPool;
 
   const itemsSnapshot = await db
     .collection('pools')
