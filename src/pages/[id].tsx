@@ -6,6 +6,7 @@ import {
   Heading,
   Stack,
   Text,
+  useToast,
   VStack,
 } from '@chakra-ui/react';
 import { GetServerSideProps } from 'next';
@@ -56,6 +57,8 @@ interface IProps {
 }
 
 const Vote: React.FC<IProps> = ({ pool, items }) => {
+  const toast = useToast();
+
   const vote = useCallback((id: string) => {
     db.collection('pools')
       .doc(pool.id)
@@ -64,6 +67,13 @@ const Vote: React.FC<IProps> = ({ pool, items }) => {
       .update({
         votes: fire.firestore.FieldValue.increment(1),
       });
+
+    toast({
+      duration: 1000,
+      isClosable: true,
+      status: 'success',
+      title: 'Voted!',
+    });
   }, []);
 
   return (
