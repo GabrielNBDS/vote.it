@@ -1,24 +1,18 @@
-# Nextjs + Firebase + Chakra UI + ESLint
+<h1 align="center">
+    <img alt="voteit logo" title="voteit logo" src=".github/logo.svg" width="220px" />
+</h1>
 
-<div align="center">
-  <img width="300" src="https://raw.githubusercontent.com/rocketseat-content/youtube-nextjs-design-system/master/.github/assets/Nextjs-ChakraUI.png" />
-</div>
-<div align="center">
-  <img width="60" src="https://www.gstatic.com/devrel-devsite/prod/vbd4700e58d826f0eab371eadc20e0e343567df356800794a790eebf2ac059db2/firebase/images/touchicon-180.png" />
-</div>
+<h2 align="center">Live Demo: https://voteit.gabrielnbds.dev </h2>
 
-## O que é?
+## 💻 Project
 
-Um boilerplate com: NextsJs, Firebase, ChakraUI, Typescript, ESlint, Prettier e EditorConfig.
+"vote.it" is the best place to create and vote in any kind of pools.
 
-A funcionalidade de login com rotas protegidas está implementada
+## 🚀 Techs
 
-## Rodando na sua máquina
+This project was built with:
 
-1. Faça o clone
-2. Instale as dependências com `npm i` ou `yarn`
-3. Habilite o que precisar no painel do firebase. Auth, Firestore, Storage e Analytics já está configurado.
-4. Coloque a sua config do firebase em `src/lib/firebase.ts` (Por padrão ele vem com a config de um dummy project onde somente a autenticação por email está habilitada)
-5. Rode `npm run dev` ou `yarn dev`
-
-ps: Para fazer uma rota privada basta chama o componente `withAuth`no export default. Deixei a `/dashboard` privada como exemplo.
+- [React](https://reactjs.org)
+- [Next](https://nextjs.org/)
+- [Firebase](https://firebase.google.com/)
+- [Chakra UI](https://chakra-ui.com/)
