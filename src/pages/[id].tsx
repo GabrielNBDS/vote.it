@@ -15,6 +15,7 @@ import fire, { db } from '../lib/firebase';
 import IPool from '../interfaces/Pool';
 import IItem from '../interfaces/Item';
 import VoteItem from '../components/VoteItem';
+import SEO from '../components/SEO';
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const id = ctx.params.id as string;
@@ -78,6 +79,12 @@ const Vote: React.FC<IProps> = ({ pool, items }) => {
 
   return (
     <>
+      <SEO
+        title={pool.name}
+        shouldIndexPage
+        description={`Vote on ${pool.name}`}
+      />
+
       <Link href="/">
         <Text
           cursor="pointer"

@@ -3,14 +3,19 @@ import React from 'react';
 import withAuth from '../../components/auth/WithAuth';
 import CreatePool from '../../components/CreatePool';
 import Header from '../../components/Header';
+import SEO from '../../components/SEO';
 
 const Create: React.FC = () => {
   return (
-    <VStack>
-      <Header />
+    <>
+      <SEO title="Create Pool" />
 
-      <CreatePool />
-    </VStack>
+      <VStack>
+        <Header />
+
+        <CreatePool />
+      </VStack>
+    </>
   );
 };
 

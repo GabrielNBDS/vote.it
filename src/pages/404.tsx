@@ -1,14 +1,12 @@
 import { Box, Button, Container, Text } from '@chakra-ui/react';
-import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
+import SEO from '../components/SEO';
 
 const NotFound: React.FC = () => {
   return (
     <>
-      <Head>
-        <title>Not Found | vote.it</title>
-      </Head>
+      <SEO title="Not Found" description="Page not found" />
 
       <Link href="/">
         <Text

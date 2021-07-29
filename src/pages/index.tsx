@@ -21,6 +21,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import SEO from '../components/SEO';
 
 const SplitScreen: React.FC = () => {
   const [poolCode, setPoolCode] = useState('');
@@ -31,6 +32,14 @@ const SplitScreen: React.FC = () => {
 
   return (
     <>
+      <SEO
+        title="vote.it"
+        shouldExcludeTitleSuffix
+        shouldIndexPage
+        description="the best place to create and vote in any
+              kind of pools."
+      />
+
       <Stack minH="100vh" direction={{ base: 'column', md: 'row' }}>
         <Flex p={8} flex={1} align="center" justify="center">
           <Stack spacing={6} w="full" maxW="lg">

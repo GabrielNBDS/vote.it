@@ -12,6 +12,7 @@ import Link from 'next/link';
 import React from 'react';
 import withAuth from '../../components/auth/WithAuth';
 import Header from '../../components/Header';
+import SEO from '../../components/SEO';
 import { useAuth } from '../../hooks/auth';
 import IPool from '../../interfaces/Pool';
 
@@ -25,6 +26,8 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
+      <SEO title="Dashboard" />
+
       <Header />
 
       <Container mt={8} maxW="1200px">
