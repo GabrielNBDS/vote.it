@@ -89,7 +89,7 @@ const CreatePoll: React.FC = () => {
 
     const batch = db.batch();
 
-    const pollRef = await db.collection('polls').doc();
+    const pollRef = db.collection('polls').doc();
 
     batch.set(pollRef, {
       name: pollName,
