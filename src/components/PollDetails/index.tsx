@@ -26,11 +26,11 @@ const PollDetails: React.FC = () => {
   const id = router.query.id as string;
 
   const { data: Poll, loading: PollLoading } = useDocument<IPoll>(
-    `Polls/${id}`,
+    `polls/${id}`,
   );
 
   const { data: items, loading: itemsLoading } = useCollection<IItem>(
-    `Polls/${id}/items`,
+    `polls/${id}/items`,
     { listen: true, orderBy: ['name', 'asc'] },
   );
 
