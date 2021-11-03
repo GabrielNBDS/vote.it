@@ -105,7 +105,7 @@ const CreatePoll: React.FC = () => {
 
     imagesUrl.forEach((image, index) => {
       const dbRef = db
-        .collection('Polls')
+        .collection('polls')
         .doc(pollRef.id)
         .collection('items')
         .doc();
