@@ -24,7 +24,7 @@ import { useRouter } from 'next/router';
 import SEO from '../components/SEO';
 
 const SplitScreen: React.FC = () => {
-  const [poolCode, setPoolCode] = useState('');
+  const [pollCode, setPollCode] = useState('');
   const [loading, setLoading] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -37,7 +37,7 @@ const SplitScreen: React.FC = () => {
         shouldExcludeTitleSuffix
         shouldIndexPage
         description="the best place to create and vote in any
-              kind of pools."
+              kind of polls."
       />
 
       <Stack minH="100vh" direction={{ base: 'column', md: 'row' }}>
@@ -66,7 +66,7 @@ const SplitScreen: React.FC = () => {
                   zIndex: -1,
                 }}
               >
-                Voting pools
+                Voting polls
               </Text>
               <br />{' '}
               <Text color="blue.400" as="span">
@@ -75,7 +75,7 @@ const SplitScreen: React.FC = () => {
             </Heading>
             <Text fontSize={{ base: 'md', lg: 'lg' }} color="gray.500">
               &quot;vote.it&quot; is the best place to create and vote in any
-              kind of pools.
+              kind of polls.
             </Text>
             <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
               <Button
@@ -90,7 +90,7 @@ const SplitScreen: React.FC = () => {
               </Button>
               <Link href="/dashboard">
                 <Button cursor="pointer" as="a" rounded="full">
-                  Create a Pool
+                  Create a Poll
                 </Button>
               </Link>
             </Stack>
@@ -114,7 +114,7 @@ const SplitScreen: React.FC = () => {
             e.preventDefault();
 
             setLoading(true);
-            router.push(`/${poolCode}`);
+            router.push(`/${pollCode}`);
           }}
           borderRadius="0"
         >
@@ -124,10 +124,10 @@ const SplitScreen: React.FC = () => {
           <ModalCloseButton color="white" />
           <ModalBody>
             <FormControl isDisabled={loading} isRequired>
-              <FormLabel>Pool code</FormLabel>
+              <FormLabel>Poll code</FormLabel>
               <Input
-                value={poolCode}
-                onChange={e => setPoolCode(e.target.value)}
+                value={pollCode}
+                onChange={e => setPollCode(e.target.value)}
               />
             </FormControl>
           </ModalBody>
@@ -139,7 +139,7 @@ const SplitScreen: React.FC = () => {
               colorScheme="blue"
               mx="auto"
             >
-              Go to pool
+              Go to poll
             </Button>
           </ModalFooter>
         </ModalContent>

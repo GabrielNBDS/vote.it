@@ -12,7 +12,7 @@ import {
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import fire, { db } from '../lib/firebase';
-import IPool from '../interfaces/Pool';
+import IPoll from '../interfaces/Poll';
 import IItem from '../interfaces/Item';
 import VoteItem from '../components/VoteItem';
 import SEO from '../components/SEO';
@@ -20,18 +20,18 @@ import SEO from '../components/SEO';
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const id = ctx.params.id as string;
 
-  const poolDocument = await db.collection('pools').doc(id).get();
+  const pollDocument = await db.collection('polls').doc(id).get();
 
-  if (!poolDocument.exists) {
+  if (!pollDocument.exists) {
     return {
       notFound: true,
     };
   }
 
-  const pool = poolDocument.data() as IPool;
+  const poll = pollDocument.data() as IPoll;
 
   const itemsSnapshot = await db
-    .collection('pools')
+    .collection('polls')
     .doc(id)
     .collection('items')
     .get();
@@ -46,23 +46,23 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 
   return {
     props: {
-      pool: { ...pool, id },
+      poll: { ...poll, id },
       items,
     },
   };
 };
 
 interface IProps {
-  pool: IPool;
+  poll: IPoll;
   items: IItem[];
 }
 
-const Vote: React.FC<IProps> = ({ pool, items }) => {
+const Vote: React.FC<IProps> = ({ poll, items }) => {
   const toast = useToast();
 
   const vote = useCallback((id: string) => {
-    db.collection('pools')
-      .doc(pool.id)
+    db.collection('polls')
+      .doc(poll.id)
       .collection('items')
       .doc(id)
       .update({
@@ -80,9 +80,9 @@ const Vote: React.FC<IProps> = ({ pool, items }) => {
   return (
     <>
       <SEO
-        title={pool.name}
+        title={poll.name}
         shouldIndexPage
-        description={`Vote on ${pool.name}`}
+        description={`Vote on ${poll.name}`}
       />
 
       <Link href="/">
@@ -99,7 +99,7 @@ const Vote: React.FC<IProps> = ({ pool, items }) => {
       <Container mt={16} pb={8} maxW="1200px">
         <Stack align="center" spacing={8}>
           <Heading as="h1" mx="auto">
-            {pool.name}
+            {poll.name}
           </Heading>
 
           <Flex

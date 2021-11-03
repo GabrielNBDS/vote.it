@@ -1,15 +1,15 @@
 import React from 'react';
 import withAuth from '../../components/auth/WithAuth';
 import Header from '../../components/Header';
-import PoolDetails from '../../components/PoolDetails';
+import PollDetails from '../../components/PollDetails';
 
-const Pool: React.FC = () => {
+const Poll: React.FC = () => {
   return (
     <>
       <Header />
-      <PoolDetails />
+      <PollDetails />
     </>
   );
 };
 
-export default withAuth(Pool);
+export default withAuth(Poll);

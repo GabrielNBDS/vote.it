@@ -21,7 +21,7 @@ interface IProps {
   setItems: React.Dispatch<React.SetStateAction<ICreateItem[]>>;
 }
 
-const PoolItem: React.FC<IProps> = ({ item, setItems, isLoading }) => {
+const PollItem: React.FC<IProps> = ({ item, setItems, isLoading }) => {
   const [currentUploadingImage, setCurrenUploadingImage] = useState('');
   const [isUploading, setIsUploading] = useState(false);
 
@@ -142,4 +142,4 @@ const PoolItem: React.FC<IProps> = ({ item, setItems, isLoading }) => {
   );
 };
 
-export default PoolItem;
+export default PollItem;

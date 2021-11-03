@@ -15,13 +15,13 @@ import {
 } from '@chakra-ui/react';
 import { v4 as uuidv4 } from 'uuid';
 import { useRouter } from 'next/router';
-import PoolItem from './PoolItem';
+import PollItem from './PollItem';
 import AddNewItem from './AddNewItem';
 import ICreateItem from '../../interfaces/CreateItem';
 import { cdn, db } from '../../lib/firebase';
 import { useAuth } from '../../hooks/auth';
 
-const CreatePool: React.FC = () => {
+const CreatePoll: React.FC = () => {
   const toast = useToast();
   const router = useRouter();
   const { user } = useAuth();
@@ -32,7 +32,7 @@ const CreatePool: React.FC = () => {
     { id: uuidv4(), image: '', name: '' },
   ]);
 
-  const [poolName, setPoolName] = useState('');
+  const [pollName, setPollName] = useState('');
 
   const [error, setError] = useState('');
 
@@ -40,7 +40,7 @@ const CreatePool: React.FC = () => {
     setError('');
   }, [items]);
 
-  const handleCreatePool = async (e: FormEvent) => {
+  const handleCreatePoll = async (e: FormEvent) => {
     e.preventDefault();
 
     setError('');
@@ -89,10 +89,10 @@ const CreatePool: React.FC = () => {
 
     const batch = db.batch();
 
-    const poolRef = await db.collection('pools').doc();
+    const pollRef = await db.collection('Polls').doc();
 
-    batch.set(poolRef, {
-      name: poolName,
+    batch.set(pollRef, {
+      name: pollName,
       ownerId: user.uid,
     });
 
@@ -105,8 +105,8 @@ const CreatePool: React.FC = () => {
 
     imagesUrl.forEach((image, index) => {
       const dbRef = db
-        .collection('pools')
-        .doc(poolRef.id)
+        .collection('Polls')
+        .doc(pollRef.id)
         .collection('items')
         .doc();
 
@@ -120,7 +120,7 @@ const CreatePool: React.FC = () => {
     await batch.commit();
 
     toast({
-      title: 'Pool created.',
+      title: 'Poll created.',
       status: 'success',
       duration: 2500,
       isClosable: true,
@@ -131,15 +131,15 @@ const CreatePool: React.FC = () => {
 
   return (
     <Container pb={8} maxW="1200px">
-      <Stack align="center" spacing={8} as="form" onSubmit={handleCreatePool}>
-        <Heading mr="auto">Create a Pool</Heading>
+      <Stack align="center" spacing={8} as="form" onSubmit={handleCreatePoll}>
+        <Heading mr="auto">Create a Poll</Heading>
 
-        <FormControl isDisabled={isLoading} isRequired id="pool name">
-          <FormLabel>Pool Name </FormLabel>
+        <FormControl isDisabled={isLoading} isRequired id="Poll name">
+          <FormLabel>Poll Name </FormLabel>
           <Input
-            value={poolName}
-            onChange={e => setPoolName(e.target.value)}
-            name="pool name"
+            value={pollName}
+            onChange={e => setPollName(e.target.value)}
+            name="Poll name"
             variant="flushed"
           />
         </FormControl>
@@ -152,7 +152,7 @@ const CreatePool: React.FC = () => {
           style={{ gap: '40px' }}
         >
           {items.map(item => (
-            <PoolItem
+            <PollItem
               isLoading={isLoading}
               key={item.id}
               item={item}
@@ -176,11 +176,11 @@ const CreatePool: React.FC = () => {
           maxW="max-content"
           colorScheme="blue"
         >
-          Create Pool
+          Create Poll
         </Button>
       </Stack>
     </Container>
   );
 };
 
-export default CreatePool;
+export default CreatePoll;

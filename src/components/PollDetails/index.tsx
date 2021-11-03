@@ -13,24 +13,24 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
-import IPool from '../../interfaces/Pool';
-import PoolItem from '../PoolItem';
+import IPoll from '../../interfaces/Poll';
+import PollItem from '../PollItem';
 import IItem from '../../interfaces/Item';
 import SEO from '../SEO';
 
 const chartColors = ['#3182CE', '#E53E3E', '#38A169'];
 
-const PoolDetails: React.FC = () => {
+const PollDetails: React.FC = () => {
   const toast = useToast();
   const router = useRouter();
   const id = router.query.id as string;
 
-  const { data: pool, loading: poolLoading } = useDocument<IPool>(
-    `pools/${id}`,
+  const { data: Poll, loading: PollLoading } = useDocument<IPoll>(
+    `Polls/${id}`,
   );
 
   const { data: items, loading: itemsLoading } = useCollection<IItem>(
-    `pools/${id}/items`,
+    `Polls/${id}/items`,
     { listen: true, orderBy: ['name', 'asc'] },
   );
 
@@ -40,7 +40,7 @@ const PoolDetails: React.FC = () => {
 
   const { onCopy: copyCode } = useClipboard(id || '');
 
-  if (poolLoading || itemsLoading) {
+  if (PollLoading || itemsLoading) {
     return (
       <Flex height="10vh" align="center" justify="center">
         <Spinner />
@@ -50,12 +50,12 @@ const PoolDetails: React.FC = () => {
 
   return (
     <>
-      <SEO title={pool?.name || ''} shouldExcludeTitleSuffix={poolLoading} />
+      <SEO title={Poll?.name || ''} shouldExcludeTitleSuffix={PollLoading} />
 
       <Container mt={8} pb={8} maxW="1200px">
         <Stack align="center" spacing={8}>
           <HStack>
-            <Heading mx="auto">{pool.name}</Heading>
+            <Heading mx="auto">{Poll.name}</Heading>
             <Button
               onClick={() => {
                 copyCode();
@@ -69,7 +69,7 @@ const PoolDetails: React.FC = () => {
               colorScheme="blue"
               size="sm"
             >
-              Copy pool code
+              Copy Poll code
             </Button>
             <Button
               onClick={() => {
@@ -85,7 +85,7 @@ const PoolDetails: React.FC = () => {
               color="white"
               size="sm"
             >
-              Copy link to pool
+              Copy link to Poll
             </Button>
           </HStack>
 
@@ -97,7 +97,7 @@ const PoolDetails: React.FC = () => {
             style={{ gap: '40px' }}
           >
             {items.map(item => (
-              <PoolItem key={item.id} item={item} />
+              <PollItem key={item.id} item={item} />
             ))}
           </Flex>
 
@@ -119,4 +119,4 @@ const PoolDetails: React.FC = () => {
   );
 };
 
-export default PoolDetails;
+export default PollDetails;

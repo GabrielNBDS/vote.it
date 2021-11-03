@@ -1,7 +1,7 @@
-interface IPool {
+interface IPoll {
   id: string;
   name: string;
   ownerId: string;
 }
 
-export default IPool;
+export default IPoll;

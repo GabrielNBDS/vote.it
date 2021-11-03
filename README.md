@@ -6,7 +6,7 @@
 
 ## 💻 Project
 
-"vote.it" is the best place to create and vote in any kind of pools.
+"vote.it" is the best place to create and vote in any kind of polls.
 
 ## 🚀 Techs
 

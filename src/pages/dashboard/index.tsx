@@ -14,12 +14,12 @@ import withAuth from '../../components/auth/WithAuth';
 import Header from '../../components/Header';
 import SEO from '../../components/SEO';
 import { useAuth } from '../../hooks/auth';
-import IPool from '../../interfaces/Pool';
+import IPoll from '../../interfaces/Poll';
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
 
-  const { data: pools, loading: poolsLoading } = useCollection<IPool>('pools', {
+  const { data: polls, loading: pollsLoading } = useCollection<IPoll>('polls', {
     where: ['ownerId', '==', user.uid],
     listen: true,
   });
@@ -33,26 +33,26 @@ const Dashboard: React.FC = () => {
       <Container mt={8} maxW="1200px">
         <HStack mb={4}>
           <Heading fontSize={24} mr="auto">
-            Your pools:
+            Your polls:
           </Heading>
           <Link href="/dashboard/create">
             <Button colorScheme="blue" rounded="full">
-              Add new pool
+              Add new poll
             </Button>
           </Link>
         </HStack>
 
-        {!poolsLoading && (
+        {!pollsLoading && (
           <VStack align="flex-start">
-            {pools.map(pool => (
-              <Link key={pool.id} href={`/dashboard/${pool.id}`}>
+            {polls.map(poll => (
+              <Link key={poll.id} href={`/dashboard/${poll.id}`}>
                 <Box cursor="pointer" py={4} px={6} boxShadow="base">
-                  <Text>{pool.name}</Text>
+                  <Text>{poll.name}</Text>
                 </Box>
               </Link>
             ))}
 
-            {pools.length === 0 && <Text>You dont have any pools :(</Text>}
+            {polls.length === 0 && <Text>You dont have any polls :(</Text>}
           </VStack>
         )}
       </Container>
